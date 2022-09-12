@@ -3,8 +3,11 @@ package br.senai.sp.jandira.gui;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -45,12 +48,14 @@ public class FrameTabuada {
 		Container painel = tela.getContentPane();
 		painel.setBackground(corDeFundo);
 		
+		// Icon 
 		ImageIcon imagens = new ImageIcon(getClass().getResource("calculadora-icon.png"));
-		
 		JLabel labelimagens = new JLabel(imagens);
 		labelimagens.setBounds(10, 20, 80, 80);
 		
+		Image icon = new ImageIcon(this.getClass().getResource("calculadora-icon.png")).getImage();
 		painel.add(labelimagens);
+		tela.setIconImage(icon);
 		
 		// Titulo
 		JLabel labelTitulo = new JLabel();
@@ -86,6 +91,32 @@ public class FrameTabuada {
 		textMultiplicando.setBounds(200, 100, 150, 30);
 		painel.add(textMultiplicando);
 		
+		textMultiplicando .addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				textMultiplicando.setText(textMultiplicando.getText().replaceAll( "[^0-9]" , ""));
+				if (textMultiplicando.getText().length()> 9) {
+					
+					JOptionPane.showMessageDialog(null,"Valor Excedido", "ERRO", JOptionPane.ERROR_MESSAGE);
+					textMultiplicando.setText(textMultiplicando.getText().replaceAll("[0-9]",""));
+				}
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		
 
 		// miniMultiplicando
@@ -98,6 +129,31 @@ public class FrameTabuada {
 		JTextField textMiniMultiplicando = new JTextField();
 		textMiniMultiplicando.setBounds(200, 150, 150, 30);
 		painel.add(textMiniMultiplicando);
+		
+		textMiniMultiplicando.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				textMiniMultiplicando.setText(textMiniMultiplicando.getText().replaceAll( "[^0-9]" , ""));
+				if (textMiniMultiplicando.getText().length()> 9) {
+					
+					JOptionPane.showMessageDialog(null,"Valor Excedido", "ERRO", JOptionPane.ERROR_MESSAGE);
+					textMiniMultiplicando.setText(textMiniMultiplicando.getText().replaceAll("[0-9]",""));
+				}
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		// maxMultiplicando
 		JLabel maxMultiplicando = new JLabel();
@@ -109,6 +165,31 @@ public class FrameTabuada {
 		JTextField textMaxMultiplicando = new JTextField();
 		textMaxMultiplicando.setBounds(200, 200, 150, 30);
 		painel.add(textMaxMultiplicando);
+		
+		textMaxMultiplicando.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				textMaxMultiplicando.setText(textMaxMultiplicando.getText().replaceAll( "[^0-9]" , ""));
+				if (textMaxMultiplicando.getText().length()> 9) {
+					
+					JOptionPane.showMessageDialog(null,"Valor Excedido", "ERRO", JOptionPane.ERROR_MESSAGE);
+					textMaxMultiplicando.setText(textMaxMultiplicando.getText().replaceAll("[0-9]",""));
+				}
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		JList<String> listResultados = new JList<String>();
 		JScrollPane scroll = new JScrollPane(listResultados);
