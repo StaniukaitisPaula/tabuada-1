@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Scrollable;
 
 import br.senai.sp.jandira.model.Tabuada;
 
@@ -84,6 +85,8 @@ public class FrameTabuada {
 		JTextField textMultiplicando = new JTextField();
 		textMultiplicando.setBounds(200, 100, 150, 30);
 		painel.add(textMultiplicando);
+		
+		
 
 		// miniMultiplicando
 		JLabel miniMultiplicando = new JLabel();
@@ -160,7 +163,9 @@ public class FrameTabuada {
 				
 				textMultiplicando.setText("");
 				textMaxMultiplicando.setText("");
-				textMiniMultiplicando.setText("");			
+				textMiniMultiplicando.setText("");	
+				scroll.setVisible(false);
+				
 			}
 		});
 		
